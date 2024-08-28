@@ -2,10 +2,15 @@
   "version": 2,
   "builds": [
     { "src": "app/index.js", "use": "@vercel/node" },
-    { "src": "public/*/", "use": "@vercel/static" }
+    { "src": "public/**/*", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "app/index.js" },
     { "src": "/(.*)", "dest": "/public/$1" }
-  ]
+  ],
+  "env": {
+    "JWT_SECRET": "@jwt_secret",
+    "JWT_EXPIRATION": "@jwt_expiration",
+    "JWT_COOKIE_EXPIRES": "@jwt_cookie_expires"
+  }
 }
